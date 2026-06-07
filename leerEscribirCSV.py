@@ -1,9 +1,11 @@
 import csv
 
-def liderTabla(equipos):
+def liderTabla(equipos): #en realidad es organizar por orden de puntos pero el ejercicio pedia que se llamara asi
+   
+   
     return 0
-def CalcularPuntos(equipos):
-    return 0
+def CalcularPuntos(equipo):
+    return equipo["ganados"]*3 + equipo["empatados"]*1
 
 
 
@@ -11,16 +13,18 @@ dictEquipos = {}
 with open("input/equiposChampions.csv", "r") as archivo:
     lector = csv.DictReader(archivo)
     for fila in lector:
-        print(fila)
+        
         dictEquipos[fila["equipo"]] = {
             "ganados": int(fila["ganados"]),
             "empatados": int(fila["empatados"]),
-            "perdidos": int(fila["perdidos"])
+            "perdidos": int(fila["perdidos"]),
+            "goles_favor": int(fila["goles_favor"]),
+            "goles_contra": int(fila["goles_contra"])
             }
 for equipo in dictEquipos:
-    print(equipo["ganados"])
+    dictEquipos[equipo]["puntos"] = CalcularPuntos(dictEquipos[equipo])
 
-
+print(dictEquipos)
 """
 with open("output/equiposSalida.csv", "w", newline="") as archivo:
     escritor = csv.writer(archivo)
