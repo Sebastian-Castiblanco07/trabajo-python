@@ -21,6 +21,8 @@ with open("input/equiposChampions.csv", "r") as archivo:
             "goles_favor": int(fila["goles_favor"]),
             "goles_contra": int(fila["goles_contra"])
             }
+
+
 for equipo in dictEquipos:
     dictEquipos[equipo]["puntos"] = CalcularPuntos(dictEquipos[equipo])
     dictEquipos[equipo]["diferencia_goles"] = dictEquipos[equipo]["goles_favor"] - dictEquipos[equipo]["goles_contra"]
